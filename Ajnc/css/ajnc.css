@@ -1,0 +1,83 @@
+
+p {
+    font: 15px tahoma, helvetica, sans-serif;
+}
+
+h3 {
+    font: 20px tahoma, helvetica, sans-serif;
+}
+
+#flexIgra {
+    margin-top: 100px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#flexSto {
+    background-color: rgb(96, 202, 96);
+    display: flex;
+    flex-direction: row;
+    border: 1px solid blue;
+    margin: -1px;
+}
+
+#flexStoKomp {
+    display: flex;
+    flex-direction: column;
+}
+
+#flexStoIgrac {
+    display: flex;
+    flex-direction: column;
+}
+
+#divNaslov {
+    border: 1px solid blue;
+    padding: 11px;
+    margin: -1px;
+    min-width: 400px;
+}
+
+#divInfoIgre {
+    border: 1px solid blue;
+    padding: 11px;
+    min-width: 400px;
+}
+
+#divKarteKomp {
+    padding: 5px;
+    min-width: 150px;
+    border-right: 1px solid blue;
+}
+
+#divKarteIgrac {
+    border-left: 1px solid blue; 
+    padding: 5px;
+    min-width: 150px;
+}
+
+#divRezultatKomp {
+    border-top: 1px solid blue;
+    border-right: 1px solid blue;
+    padding: 5px;
+    min-width: 200px;
+}
+
+#divRezultatKomp p, #divRezultatIgrac p {
+    display: inline;
+}
+
+#divRezultatIgrac {
+    border-top: 1px solid blue;
+    border-left: 1px solid blue;
+    padding: 5px;
+    min-width: 200px;
+}
+
+#divKontrole {
+    border: 1px solid blue;
+    padding: 11px;
+    min-width: 400px;
+    text-align: center;
+}
