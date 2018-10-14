@@ -1,0 +1,218 @@
+html {
+    font-size: 12px;
+    font-family: tahoma, helvetica, sans-serif;
+    background: url("/slike/Casino3.jpg")no-repeat center center fixed;
+    background-size: cover;
+}
+
+.karta {
+    width: 160px;
+    height: 235px;
+}
+
+#naslovnaSlika {
+    display: block;
+    margin: auto;
+    width: 50%;
+}
+
+.brojaci {
+    padding: 3px 0;
+}
+
+.brojaci p:nth-child(1) {
+    font-size: 1.2rem;
+    color: rgb(85, 38, 0);
+    text-align: center;
+    /* margin-top: 10px; */
+}
+
+.brojaci p:nth-child(2) {
+    font-size: 2.1rem;
+    font-weight: bold;
+    color: rgb(85, 38, 0);
+    text-align: center;
+    margin: 0.3rem 0;
+}
+
+#dInfoIgre {
+    font-size: 1.5rem;
+    color: rgb(255, 223, 197);
+    text-align: center;
+    padding-bottom: 1rem;
+}
+
+#dIgra {
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    width: 1000px;
+    border: 1rem solid  rgb(85, 38, 0);
+    background: green;
+    border-radius: 1.5rem;
+}
+
+#dZaglavlje,
+#dSto,
+#dUlog,
+#dKontrole {
+    display: flex;
+    flex-direction: row;
+    padding: 0.5rem 0;
+}
+
+#dStoKomp {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    flex: 1 1 0;
+    padding: 1.5rem 0;
+    border-top: 1px solid rgb(85, 38, 0);
+    border-bottom: 1px solid rgb(85, 38, 0);
+    border-right: 1px solid rgb(85, 38, 0);
+}
+
+#dStoIgrac {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: flex-start;
+    flex: 1 1 0; /* Obezbeđuje da su prostori za karte za dStoSplit1 i dStoSplit2 jednaki */
+    padding: 1.5rem 0;
+    border-top: 1px solid rgb(85, 38, 0);
+    border-bottom: 1px solid rgb(85, 38, 0);
+}
+
+#dStoSplit1,
+#dStoSplit2 {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    /* justify-content: center; */
+    margin: 0 10px;
+}
+
+/* #dStoSplit2 {
+    display: none;
+} */
+
+#dZaglavlje > * {
+    flex: 1 1 0;
+}
+
+#dZbirKomp, #dZbirSplit1, #dZbirSplit2 {
+    margin-top: 1rem;
+}
+
+#dZetoni {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex: 3 1 0;
+    padding-bottom: 0.5rem;
+}
+
+#dIznosUloga {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding-bottom: 0.5rem;
+}
+
+.zeton {
+    background: transparent url(/slike/MojaSlika50x50.png) no-repeat;
+    font-size: 1.3rem;
+    font-weight: bold;
+    color: gold;
+    height: 5rem;
+    width: 5rem;
+    margin: 0 2rem;
+    border-radius: 50%;
+    border: 5px solid red;
+}
+
+.zeton:hover {
+    border-color: rgb(255, 223, 197);
+}
+
+#dIznosUloga {
+    flex: 1 1 0;
+}
+
+#dKontrole {
+    justify-content: center;
+    
+    text-align: center;
+    border-top: 1px solid  rgb(85, 38, 0);
+}
+
+.dugme {
+    font-size: 1.5rem;
+    color: rgb(255, 223, 197);
+    width: 7.5rem;
+    height: 4rem;
+    margin: 0 2rem;
+    border-radius: 1.2rem;
+    border: 3px solid  rgb(85, 38, 0);
+    background: green;
+}
+
+.dugme:hover {
+    border-color: rgb(255, 223, 197); 
+}
+
+@media (max-width: 1100px) {
+    
+    html {
+        background: url("/slike/Casinomobilni.jpg") repeat;
+    }
+
+    #dInfoIgre {
+        font-size: 4rem;
+        color: rgb(136, 204, 136);
+        text-align: center;
+        padding: 15px 5px;
+    }
+
+    .brojaci p:nth-child(1) {
+        font-size: 2.3rem;
+        margin-top: 5px;
+    }
+    
+    .brojaci p:nth-child(2) {
+        font-size: 4rem;
+        margin-top: 5px;
+    }
+    
+    #dSto {
+        flex-direction: column;
+    }
+
+    #dStoKomp {
+        flex: 1 1 auto;
+    }
+
+    #dStoIgrac {
+        flex: 1 1 auto;  
+    } 
+
+    .zeton {
+        background: transparent url(/slike/MojaSlika100x100.png) repeat;
+        font-size: 3rem;
+        height: 10rem;
+        width: 10rem;
+        margin: 0 1rem;
+    }
+    #dKontrole {
+        padding: 1rem 0;
+    }
+    .dugme {
+        font-size: 3rem;
+        width: 14rem;
+        height: 8rem;
+        margin: auto;
+    }
+    
+}

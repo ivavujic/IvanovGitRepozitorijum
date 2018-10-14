@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="/css/MeyerWebReset.css">
+    <link rel="stylesheet" href="/css/ajnc.css">
+
+</head>
+
+<body>
+    <picture>
+        <img id='naslovnaSlika' src="/slike/BlackJackNaslov2.png" alt="Naslov igre" style="width:auto;">
+    </picture>
+
+    <!-- 
+        Sadrži sve elemente koji su potrebni za igru Ajnc: Zaglavlje za rezultate, Sto na kojem se igra,
+        prostor na kojem se biraju žetoni (postavlja ulog) i prostor za dugmiće kojima se upravlja igrom
+    -->
+
+    <div id = "dIgra">
+
+        <div id="dZaglavlje"> 
+            <!-- 
+                Broj pobeda u jednom ciklusu igre koje je ostvario kompjuter
+             -->
+            <div id='dBrPobedaKomp' class='brojaci'>
+                <p>Pobede kompjutera</p>
+                <p id='pBrPobedaKomp'>0</p>
+            </div>
+            <!-- 
+                Tekući iznos novca koji stoji na raspolaganju kompjuteru za igru
+             -->
+            <div id='dOsvojenIznosKomp' class='brojaci'>
+                <p>Iznos kompjutera</p>
+                <p id='pOsvojenIznosKomp'>1000</p>
+            </div>
+            <!-- 
+                Broj pobeda u jednom ciklusu igre koje je ostvario igrač;
+             -->
+            <div id='dBrPobedaIgrac' class='brojaci'>
+                <p>Pobede igrača</p>
+                <p id='pBbrPobedaIgrac'>0</p>
+            </div>
+            <!-- 
+                Tekući iznos novca koji stoji na raspolaganju igraču za igru
+             -->
+            <div id='dOsvojeniIZnos Igrac' class='brojaci'>
+                <p>Iznos igrača</p>
+                <p id='pOsvojenIznosIgrac'>170</p>
+            </div>
+        </div>
+        <!-- 
+            Prostor za poruke koje kompjuter razmenjuje sa igračem u toku igre
+        -->
+        <div id="dInfoIgre">
+            <p id="pInfoIgre"> Započnite novu igru!</p>
+        </div>
+
+        <!-- 
+            Prostor za igru koji imitira sto za igranje na kojem se dele karte. Sastoji se 
+            od dela stola za kompjuter i dela stola za igrača
+        -->
+        <div id="dSto">
+            <div id = "dStoKomp"> 
+                <img class='karta' src="/slike/playingcards/ace_of_spades.png" style= "margin-left: -90px">
+                <img class='karta' src="/slike/playingcards/7_of_hearts.png" style="margin-top: -205px; margin-left: -30px">
+                <img class='karta' src="/slike/playingcards/5_of_hearts.png" style="margin-top: -205px; margin-left: 30px">
+                <img class='karta' src="/slike/playingcards/9_of_hearts.png" style="margin-top: -205px; margin-left: 90px">
+                
+                <div id="dZbirKomp" class='brojaci'> <!-- Zbir karata koje je izvukao kompjuter --> 
+                    <p>Zbir kompjutera:</p>
+                    <p id='pZbirKomp'>17</p>
+                </div>
+            </div>
+            <div id="dStoIgrac"> 
+                <div id='dStoSplit1'>
+                    <img class='karta' src="/slike/playingcards/queen_of_hearts2.png" style= "margin-left: -30px">
+                    <img class='karta' src="/slike/playingcards/7_of_hearts.png" style="margin-top: -205px; margin-left: 30px">
+                    <!-- <img class='karta' src="/slike/playingcards/5_of_hearts.png" style="margin-top: -205px; margin-left: -0px">
+                    <img class='karta' src="/slike/playingcards/9_of_hearts.png" style="margin-top: -205px; margin-left: 60px">
+                    <img class='karta' src="/slike/playingcards/3_of_hearts.png" style="margin-top: -205px; margin-left: 120px"> -->
+                    
+                    <div id="dZbirSplit1" class='brojaci'> <!-- Zbir karata koje je izvukao Igrač u prvom Split-u -->
+                        <p>Zbir split 1:</p>
+                        <p id='pZbirSplit1'>21</p>
+                    </div>
+                </div>
+                <div id='dStoSplit2'>
+                    <img class='karta' src="/slike/playingcards/10_of_hearts.png" style= "margin-left: -120px">
+                    <img class='karta' src="/slike/playingcards/7_of_hearts.png" style="margin-top: -205px; margin-left: -60px">
+                    <img class='karta' src="/slike/playingcards/5_of_hearts.png" style="margin-top: -205px; margin-left: -0px">
+                    <img class='karta' src="/slike/playingcards/9_of_hearts.png" style="margin-top: -205px; margin-left: 60px">
+                    <img class='karta' src="/slike/playingcards/3_of_hearts.png" style="margin-top: -205px; margin-left: 120px">
+                    
+                    <div id="dZbirSplit2" class='brojaci'> <!-- Zbir karata koje je izvukao Igrač u prvom Split-u -->
+                        <p>Zbir split 2:</p>
+                        <p id='pZbirSplit2'>11</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- 
+            Prostor za igru koji sadrži izbor žetona i ukupni ulog koji je igrač uložio u jednu igru 
+        -->
+        <div id='dUlog'>
+            <div id='dZetoni'>
+                <button id="but1" class="zeton"> 1€ </button>
+                <button id="but10" class="zeton"> 10€ </button>
+                <button id="but50" class="zeton"> 50€ </button>
+                <button id="but100" class="zeton"> 100€ </button>
+                <button id="but0" class="zeton"> 0€ </button> <!-- Kada se izabere ovaj žeton, ulog se resetuje na 0 -->
+            </div>
+            <div id='dIznosUloga' class='brojaci'>
+                <p>Ulog:</p>
+                <p id='iznosUloga'>350</p>
+            </div>
+        </div>
+
+        <div id="dKontrole">
+            <!-- <button id="butNovaIgra" class="dugme"> Nova igra </button> -->
+            <button id="butOsiguranje" class="dugme"> Osiguraj </button>
+            <button id="butDupliraj" class="dugme"> Dupliraj </button>
+            <button id="butPodeli" class="dugme"> Podeli </button>
+            <button id="butStani" class="dugme"> Stani </button>
+            <button id="butDajKartu" class="dugme"> Daj kartu </button>
+        </div>
+    </div>
+
+
+
+
+    <!-- <script src="/lib/ajncklase.js"></script> -->
+    <script type='module' src="/lib/ajnc.js"></script>
+</body>
+
+</html>
