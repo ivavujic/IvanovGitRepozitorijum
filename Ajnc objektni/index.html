@@ -20,7 +20,7 @@
 
     <div id = "dIgra">
 
-        <div id="dZaglavlje"> 
+        <div id="dStatistikaIgre"> 
             <!-- 
                 Broj pobeda u jednom ciklusu igre koje je ostvario kompjuter
              -->
@@ -40,7 +40,7 @@
              -->
             <div id='dBrPobedaIgrac' class='brojaci'>
                 <p>Pobede igrača</p>
-                <p id='pBbrPobedaIgrac'>0</p>
+                <p id='pBrPobedaIgrac'>0</p>
             </div>
             <!-- 
                 Tekući iznos novca koji stoji na raspolaganju igraču za igru
@@ -61,8 +61,8 @@
             Prostor za igru koji imitira sto za igranje na kojem se dele karte. Sastoji se 
             od dela stola za kompjuter i dela stola za igrača
         -->
-        <div id="dSto">
-            <div id = "dStoKomp"> 
+        <div id="dTalon">
+            <div id = "dTalonKomp"> 
                 <img class='karta' src="/slike/playingcards/ace_of_spades.png" style= "margin-left: -90px">
                 <img class='karta' src="/slike/playingcards/7_of_hearts.png" style="margin-top: -205px; margin-left: -30px">
                 <img class='karta' src="/slike/playingcards/5_of_hearts.png" style="margin-top: -205px; margin-left: 30px">
@@ -73,8 +73,8 @@
                     <p id='pZbirKomp'>17</p>
                 </div>
             </div>
-            <div id="dStoIgrac"> 
-                <div id='dStoSplit1'>
+            <div id="dTalonIgrac"> 
+                <div id='dTalonSplit1'>
                     <img class='karta' src="/slike/playingcards/queen_of_hearts2.png" style= "margin-left: -30px">
                     <img class='karta' src="/slike/playingcards/7_of_hearts.png" style="margin-top: -205px; margin-left: 30px">
                     <!-- <img class='karta' src="/slike/playingcards/5_of_hearts.png" style="margin-top: -205px; margin-left: -0px">
@@ -86,7 +86,7 @@
                         <p id='pZbirSplit1'>21</p>
                     </div>
                 </div>
-                <div id='dStoSplit2'>
+                <div id='dTalonSplit2'>
                     <img class='karta' src="/slike/playingcards/10_of_hearts.png" style= "margin-left: -120px">
                     <img class='karta' src="/slike/playingcards/7_of_hearts.png" style="margin-top: -205px; margin-left: -60px">
                     <img class='karta' src="/slike/playingcards/5_of_hearts.png" style="margin-top: -205px; margin-left: -0px">
@@ -113,13 +113,13 @@
             </div>
             <div id='dIznosUloga' class='brojaci'>
                 <p>Ulog:</p>
-                <p id='iznosUloga'>350</p>
+                <p id='pIznosUloga'>0</p>
             </div>
         </div>
 
         <div id="dKontrole">
-            <!-- <button id="butNovaIgra" class="dugme"> Nova igra </button> -->
-            <button id="butOsiguranje" class="dugme"> Osiguraj </button>
+            <button id="butNovaIgra" class="dugme"> Nova igra </button>
+            <button id="butOsiguraj" class="dugme"> Osiguraj </button>
             <button id="butDupliraj" class="dugme"> Dupliraj </button>
             <button id="butPodeli" class="dugme"> Podeli </button>
             <button id="butStani" class="dugme"> Stani </button>
