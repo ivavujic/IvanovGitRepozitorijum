@@ -41,21 +41,19 @@ function zatvoriDeljenje (iznosUloga, pobednik ) {
     bOsiguraj.sakrijDugme();
     bNovaIgra.otkrijDugme();
 
-    deljenje.ponistiKarteBankera();
     deljenje.opcijeIgre = 'Standard'
+    deljenje.ponistiKarteBankera();
     split1.ponistiKarteIgraca ();
     talon.resetujZbirKarata();
-    statistikaIgre.aktivirajZetone();
 
     statistikaIgre.resetujUlog();
+    statistikaIgre.aktivirajZetone();
 }
 
 function podeliKarte () {
     
     let skrivenaKarta = {};
-    let zbir2KarteIgraca = 0;
 
-    
     split1.dodajKartuIgracu = spil.izvuciKartu();
     talon.dodajKartuNaTalon('IgracSplit1', split1.karteIgraca);
 
@@ -205,8 +203,9 @@ var fNovaIgra = function () {
         statistikaIgre.deaktivirajZetone();
         talon.obrisiTalon();
         deljenje.novoDeljenje();
-        spil.promesajMe();
+        /* spil.promesajMe(); */
 
+        spil = new Spil();
         podeliKarte();
 
         if (talon.zbirKarataSplit1 >=21) {

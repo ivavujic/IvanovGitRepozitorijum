@@ -1,17 +1,5 @@
 export {Karta, Spil, KockarskiSto, StatistikaIgre, InfoIgre, Talon, Dugme};
 
-    /* 
-    pozdrav: 'Dobrodošli u Ivanov ajnc!',
-    novaIgra: 'Započnite novu igru',
-    novaKarta: 'Zatražite novu kartu',
-    pobedaIgraca: 'Čestitamo. Osvojili ste:',
-    pobedaBankera: 'Na žalost izgubili ste:',
-    podela: 'Izvukli ste dve identične karte. Ako želite podelu kliknite "Podela"',
-    osiguranje: 'Kompjuter ima šansu za ajnc. Ako zelite osiguranje kliknite na "Osiguranje',
-    dupliranje: 'Dupliranje'
-     */
-
-
 class Karta {
     constructor (brojKarte, simbol, skrivenaKarta, imgElement) { 
         this.simbol = simbol;
