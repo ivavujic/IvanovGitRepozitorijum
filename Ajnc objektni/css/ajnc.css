@@ -1,8 +1,14 @@
+
 html {
     font-size: 12px;
     font-family: tahoma, helvetica, sans-serif;
     background: url("/slike/Casino3.jpg")no-repeat center center fixed;
     background-size: cover;
+}
+
+h1 {
+    font-size: 1.2rem;
+    line-height: 3rem;
 }
 
 .karta {
@@ -39,6 +45,35 @@ html {
     font-size: 1.5rem;
     color: rgb(255, 223, 197);
     text-align: center;
+    padding-bottom: 1rem;
+}
+
+#dHelp {
+    margin:  auto;
+    margin-top: 10px;
+    width: 980px;
+    height: 300px;
+    padding: 10px;
+    border: 1rem solid  rgb(85, 38, 0);
+    background: rgb(188, 231, 188);
+    border-radius: 1.5rem;
+}
+
+#dHelp::-webkit-scrollbar {
+    background: rgb(188, 231, 188); 
+    border-radius: 5px;
+}
+#dHelp::-webkit-scrollbar-track-piece {
+    border: 1px solid rgb(85, 38, 0); 
+    border-radius: 5px;
+}
+#dHelp::-webkit-scrollbar-thumb {
+    background: green; 
+    border-radius: 5px;
+}
+
+#dHelp p {
+    line-height: 1.2rem;
     padding-bottom: 1rem;
 }
 

@@ -160,6 +160,10 @@ class Dugme {
                 this._htmlElement = document.getElementById ('butOtkrijSKartu');
                 this._htmlElement.addEventListener ('click', _funkcija);
             break;
+            case 'Pravila igre':
+                this._htmlElement = document.getElementById ('butHelp');
+                this._htmlElement.addEventListener ('click', _funkcija);
+            break;
 
         } 
         this._htmlElement.style.display = 'block';
@@ -176,12 +180,25 @@ class Dugme {
 
 class KockarskiSto {
     constructor () {
+        this._help = document.getElementById('dHelp');
     }
 
     promeniTekstPElementa (pElement, tekst) {
         pElement.innerText = tekst;
     }
 
+    sakrijOtkrijHelp () {
+        if (this._help.style.display === 'none') {
+            this._help.style.display = 'block';
+        }
+        else {
+            this._help.style.display = 'none';    
+        }
+    }
+
+    sakrijHelp () {
+        this._help.style.display = 'none';
+    }
 }
 
 class StatistikaIgre extends KockarskiSto {
@@ -412,7 +429,10 @@ class Talon extends KockarskiSto {
         let _karteNaTalonu = document.getElementsByClassName ('karta');
         while (_karteNaTalonu[0]) {
             _karteNaTalonu[0].parentNode.removeChild(_karteNaTalonu[0]);
-        } 
+        }
+        super.promeniTekstPElementa(this._pZbirKomp, 0);
+        super.promeniTekstPElementa(this._pZbirSplit1, 0);
+        super.promeniTekstPElementa(this._pZbirSplit2, 0);
     }
 
     otkrijSkrivenuKartu (karteBankera) {

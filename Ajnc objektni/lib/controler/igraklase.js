@@ -108,9 +108,9 @@ class Deljenje {
                     netoDobitak = bj * iznosUloga; // dobitak bez uloženog novca ili gubitak
                     break;
                 case 'Dupliranje':
-                    obracun.dobitakIgrac = 2 * (bj * iznosUloga + iznosUloga);
-                    obracun.dobitakKomp = -2 * (bj * iznosUloga);
-                    netoDobitak = 2 * bj * iznosUloga;
+                    obracun.dobitakIgrac = bj * iznosUloga + iznosUloga;
+                    obracun.dobitakKomp = -(bj * iznosUloga);
+                    netoDobitak = bj * iznosUloga;
                     break;
                 case 'Osiguranje':
                     obracun.dobitakIgrac = bj * iznosUloga + iznosUloga; 
@@ -166,12 +166,13 @@ class Deljenje {
             return obracun;
         }
         else if (pobednik === 'Nerešeno') {
-            obracun.dobitakKomp = 0;
             obracun.dobitakIgrac = iznosUloga;
             if (opcijaIgre === 'Osiguranje') {
+                obracun.dobitakKomp = 0.5 * iznosUloga;
                 obracun.poruka = 'Rezultat je nerešen. Gubite osiguranje od ' + 0.5 * iznosUloga + '€';
             }
             else {
+                obracun.dobitakKomp = 0;
                 obracun.poruka = 'Rezultat je nerešen. Zadržavate svoj ulog';
             }
             return obracun;

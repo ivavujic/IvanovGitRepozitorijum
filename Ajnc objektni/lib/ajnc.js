@@ -7,7 +7,7 @@ import {Deljenje, Igrac, Split, Banker} from '/lib/controler/igraklase.js';
 var kockarskiSto    = new KockarskiSto ();
 var spil            = new Spil ();
 var infoIgre        = new InfoIgre();
-var statistikaIgre  = new StatistikaIgre (0, 10000, 0, 500, 0);
+var statistikaIgre  = new StatistikaIgre (0, 10000, 0, 1500, 0);
 var talon           = new Talon(0 ,0, 0);
 var igrac           = new Igrac ('Ivan', 500);
 var banker          = new Banker ('Komp', 10000);
@@ -40,6 +40,7 @@ function zatvoriDeljenje (iznosUloga, pobednik ) {
     bPredaj.sakrijDugme();
     bOsiguraj.sakrijDugme();
     bNovaIgra.otkrijDugme();
+    bHelp.otkrijDugme();
 
     deljenje.opcijeIgre = 'Standard'
     deljenje.ponistiKarteBankera();
@@ -76,11 +77,16 @@ function podeliKarte () {
     else if (split1.karteIgraca[0].brojKarte === split1.karteIgraca[1].brojKarte) {
         infoIgre.prikaziPoruku ('Možete da podelite svoje karte na dva splita');
     }
-    else if (deljenje.karteBankera[1].odrediVrednostKarte(1) === 10) {
+    else if (deljenje.karteBankera[1].odrediVrednostKarte(1) === 11) {
         bOsiguraj.otkrijDugme();
         infoIgre.prikaziPoruku ('Možete da kupite osiguranje u visini polovine svog uloga');
     }
     
+}
+
+var fHelp = function () {
+    kockarskiSto.sakrijOtkrijHelp();
+    talon.obrisiTalon();
 }
 
 var fDajKartu = function () {
@@ -193,19 +199,21 @@ var fNovaIgra = function () {
         infoIgre.prikaziPoruku('Uložite žetone!');
     }
     else {
-        bNovaIgra.sakrijDugme(); //Sakrij dugme Nova igra
-        bDajKartu.otkrijDugme(); //Otkrij dugme Daj kartu
-        bStani.otkrijDugme();    //Otkrij dugme Stani
-        bPredaj.otkrijDugme();   //Otkrij dugme Predaj
+        bNovaIgra.sakrijDugme();
+        bDajKartu.otkrijDugme();
+        bStani.otkrijDugme();
+        bPredaj.otkrijDugme();
+        bHelp.sakrijDugme();
+        kockarskiSto.sakrijHelp();
         
         infoIgre.prikaziPoruku('Izvucite kartu');
         
         statistikaIgre.deaktivirajZetone();
         talon.obrisiTalon();
         deljenje.novoDeljenje();
-        /* spil.promesajMe(); */
 
         spil = new Spil();
+
         podeliKarte();
 
         if (talon.zbirKarataSplit1 >=21) {
@@ -224,6 +232,7 @@ var bPredaj = new Dugme ('Predaj', fPredaj);
 var bOtkrijSKartu = new Dugme ('Otkrij kartu', fOtkrijSKartu);
 
 var bNovaIgra = new Dugme ('Nova igra', fNovaIgra);
+var bHelp = new Dugme ('Pravila igre', fHelp);
 
 bDajKartu.sakrijDugme();
 bStani.sakrijDugme();
