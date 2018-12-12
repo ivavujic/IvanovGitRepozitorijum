@@ -3,13 +3,13 @@ import { Spil } from "/lib/model/ajncklase.js";
 export {Deljenje, Igrac, Banker, Split};
 
 class Igrac {
-    constructor (ime, _iznosNovcaZaIgru) {
+    constructor (ime, iznosNovcaZaIgru) {
         this.ime = ime;
-        this.iznosNovcaZaIgru = _iznosNovcaZaIgru;
+        this.iznosNovcaZaIgru = iznosNovcaZaIgru;
         
     }
 
-    set _iznosNovcaZaIgru (noviIznosNovcaZaIgru) { 
+    set setIznosNovcaZaIgru (noviIznosNovcaZaIgru) { 
         this.iznosNovcaZaIgru = noviIznosNovcaZaIgru;
     }
 
@@ -38,13 +38,13 @@ class Split extends Igrac {
 }
 
 class Banker {
-    constructor (ime, _iznosNovcaZaIgru) {
+    constructor (ime, iznosNovcaZaIgru) {
         this.ime = ime;
-        this.iznosNovcaZaIgru = _iznosNovcaZaIgru;
+        this.iznosNovcaZaIgru = iznosNovcaZaIgru;
         
     }
 
-    set _iznosNovcaZaIgru (noviIznosNovcaZaIgru) {
+    set setIznosNovcaZaIgru (noviIznosNovcaZaIgru) {
         this.iznosNovcaZaIgru = noviIznosNovcaZaIgru;
     }
     

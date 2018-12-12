@@ -11,6 +11,12 @@ h1 {
     line-height: 3rem;
 }
 
+h2 {
+    font-size: 2.5rem;
+    line-height: 4rem;
+    color: rgb(228, 186, 139);
+}
+
 .karta {
     width: 160px;
     height: 235px;
@@ -20,6 +26,57 @@ h1 {
     display: block;
     margin: auto;
     width: 50%;
+}
+
+#dPozdravniEkran {
+    margin: auto;
+    display: flex;
+    flex-direction: row;
+    width: 1000px;
+    height: 710px;
+    border: 1rem solid  rgb(85, 38, 0);
+    background: green;
+    border-radius: 1.5rem;
+    justify-content : center;
+}
+
+#dPodaci {
+    width: 40%;
+}
+
+#dNaslovnaSlika {
+    width: 60%;
+}
+
+#dPodaci  h2 {
+    margin: auto;
+    text-align: center;
+}
+
+#dPodaci  div {
+    width: 52%;
+    margin: auto;
+    font-size: 1.2rem;
+    line-height: 1.5rem;
+    color: rgb(228, 186, 139);
+}
+
+#dPodaci  button {
+    margin: 40px auto;
+}
+
+.polje {
+    border-radius: 7px;
+    border: 2px solid rgb(85, 38, 0);
+    background-color: rgb(228, 186, 139);
+    box-sizing: border-box;
+    padding: 0.5rem;
+    color: rgb(85, 38, 0);
+    font-size: 1.3rem;
+}
+
+#dPodaci p {
+    margin: 3px 0;
 }
 
 .brojaci {
@@ -217,34 +274,96 @@ h1 {
         background: url("/slike/Casinomobilni.jpg") repeat;
     }
 
+    h2 {
+        font-size: 5rem;
+        line-height: 10rem;
+        color: rgb(85, 38, 0)
+    }
+
+    #dHelp {
+        height: 600px;
+    }
+
+    #dPozdravniEkran {
+        flex-direction: column;
+        height: 1500px;
+    }
+
+    #dPodaci, #dNaslovnaSlika {
+        width: 100%;
+        
+    }
+    
+    #dPodaci  h2 {
+        margin: auto;
+        text-align: center;
+    }
+    
+    #dPodaci  div {
+        width: 65%;
+        margin: auto;
+        font-size: 3rem;
+        line-height: 3.5rem;
+        color: rgb(85, 38, 0);
+    }
+    
+    #dPodaci  button {
+        margin: 60px auto;
+    }
+    
+    .polje {
+        border-radius: 7px;
+        border: 2px solid rgb(85, 38, 0);
+        background-color: rgb(188, 231, 188);
+        box-sizing: border-box;
+        padding: 0.5rem;
+        color: rgb(85, 38, 0);
+        font-size: 4rem;
+    }
+    
+    #dPodaci p {
+        margin: 3px 0;
+    }
+
     #dInfoIgre {
         font-size: 4rem;
         color: rgb(136, 204, 136);
         text-align: center;
-        padding: 15px 5px;
+        padding: 10px 5px;
     }
 
     .brojaci p:nth-child(1) {
-        font-size: 2.3rem;
-        margin-top: 5px;
+        font-size: 3.5rem;
     }
     
     .brojaci p:nth-child(2) {
-        font-size: 4rem;
-        margin-top: 5px;
+        font-size: 4.5rem;
+    }
+
+    #dZbirKomp, #dZbirSplit1, #dZbirSplit2 {
+        margin-bottom: 2rem;
     }
     
     #dTalon {
         flex-direction: column;
     }
 
+    #dTalon img {
+        transform: scale(1.2);
+    }
+
     #dTalonKomp {
         flex: 1 1 auto;
+        padding-bottom: 3.3rem;
     }
 
     #dTalonIgrac {
-        flex: 1 1 auto;  
+        flex: 1 1 auto;
+        
     } 
+    #dTalonSplit1, #dTalonSplit2 {
+        padding-bottom: 2rem;
+    }
 
     .zeton {
         background: transparent url(/slike/MojaSlika100x100.png) repeat;

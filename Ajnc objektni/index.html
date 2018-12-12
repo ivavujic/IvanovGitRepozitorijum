@@ -13,41 +13,69 @@
         <img id='naslovnaSlika' src="/slike/BlackJackNaslov2.png" alt="Naslov igre" style="width:auto;">
     </picture>
 
+
+    <div id='dPozdravniEkran'>
+        <div id='dNaslovnaSlika'>
+            <picture>
+                <img id='banker' src="/slike/Banker.png" alt="Banker" style="width:auto;">
+            </picture>
+        </div>
+        <div id='dPodaci'>
+            <h2>Dobrodošli u Ivanov Ajnc </h2>
+            <div>
+                <p>Ime igrača:</p>
+                <input id='iImeIgraca' class = 'polje' type="text" name='imeIgrac' placeholder='Unesite vaše ime...'>
+                <p id='errImeIgrac'>
+                    &nbsp
+                </p>
+                <p>Iznos uloga igrača:</p>
+                <input id='iIznosUlogaIgrac' class = 'polje' type="text" name='iznosUlogaIgrac' value='1500' placeholder='Iznos uloga igraca...'>
+                <p id='errIznosUlogaIgrac'>
+                    &nbsp
+                </p>
+                <p>Iznos uloga kompjutera:</p>
+                <input id='iIznosUlogaKomp' class = 'polje' type="text" name='iznosUlogaKomp' value='10000' placeholder='Iznos uloga kopjutera...'>
+                <p id='errIznosUlogaKomp'>
+                    &nbsp
+                </p>
+                <button id="butZapocniIgru" class="dugme" style='display:none'> Započni igru </button>
+            </div>
+        </div>
+    </div>
     <!-- 
         Sadrži sve elemente koji su potrebni za igru Ajnc: Zaglavlje za rezultate, Sto na kojem se igra,
         prostor na kojem se biraju žetoni (postavlja ulog) i prostor za dugmiće kojima se upravlja igrom
     -->
+    <div id="dIgra" style='display: none'>
 
-    <div id = "dIgra">
-
-        <div id="dStatistikaIgre"> 
+        <div id="dStatistikaIgre">
             <!-- 
                 Broj pobeda u jednom ciklusu igre koje je ostvario kompjuter
              -->
             <div id='dBrPobedaKomp' class='brojaci'>
                 <p>Pobede kompjutera</p>
-                <p id='pBrPobedaKomp'>0</p>
+                <p id = 'pBrPobedaKomp'>0</p>
             </div>
             <!-- 
                 Tekući iznos novca koji stoji na raspolaganju kompjuteru za igru
              -->
             <div id='dOsvojenIznosKomp' class='brojaci'>
                 <p>Iznos kompjutera</p>
-                <p id='pOsvojenIznosKomp'>1000</p>
+                <p id = 'pOsvojenIznosKomp'>0</p>
             </div>
             <!-- 
                 Broj pobeda u jednom ciklusu igre koje je ostvario igrač;
              -->
             <div id='dBrPobedaIgrac' class='brojaci'>
-                <p>Pobede igrača</p>
-                <p id='pBrPobedaIgrac'>0</p>
+                <p id = 'pPobedeIme'>Pobede igrača</p>
+                <p id = 'pBrPobedaIgrac'>0</p>
             </div>
             <!-- 
                 Tekući iznos novca koji stoji na raspolaganju igraču za igru
              -->
-            <div id='dOsvojeniIZnos Igrac' class='brojaci'>
-                <p>Iznos igrača</p>
-                <p id='pOsvojenIznosIgrac'>170</p>
+            <div id = 'dOsvojeniIZnos Igrac' class='brojaci'>
+                <p id = 'pDobitakIme'> Dobitak igrača</p>
+                <p id='pOsvojenIznosIgrac'>0</p>
             </div>
         </div>
         <!-- 
@@ -62,21 +90,24 @@
             od dela stola za kompjuter i dela stola za igrača
         -->
         <div id="dTalon">
-            <div id = "dTalonKomp"> 
-                <div id="dZbirKomp" class='brojaci'> <!-- Zbir karata koje je izvukao kompjuter --> 
+            <div id="dTalonKomp">
+                <div id="dZbirKomp" class='brojaci'>
+                    <!-- Zbir karata koje je izvukao kompjuter -->
                     <p>Zbir kompjutera:</p>
                     <p id='pZbirKomp'>0</p>
                 </div>
             </div>
-            <div id="dTalonIgrac"> 
+            <div id="dTalonIgrac">
                 <div id='dTalonSplit1'>
-                    <div id="dZbirSplit1" class='brojaci'> <!-- Zbir karata koje je izvukao Igrač u prvom Split-u -->
+                    <div id="dZbirSplit1" class='brojaci'>
+                        <!-- Zbir karata koje je izvukao Igrač u prvom Split-u -->
                         <p>Zbir igrača split 1:</p>
                         <p id='pZbirSplit1'>0</p>
                     </div>
                 </div>
                 <div id='dTalonSplit2'>
-                    <div id="dZbirSplit2" class='brojaci'> <!-- Zbir karata koje je izvukao Igrač u prvom Split-u -->
+                    <div id="dZbirSplit2" class='brojaci'>
+                        <!-- Zbir karata koje je izvukao Igrač u prvom Split-u -->
                         <p>Zbir igrača split 2:</p>
                         <p id='pZbirSplit2'>0</p>
                     </div>
@@ -92,7 +123,8 @@
                 <button id="but10" class="zeton"> 10€ </button>
                 <button id="but50" class="zeton"> 50€ </button>
                 <button id="but100" class="zeton"> 100€ </button>
-                <button id="but0" class="zeton"> 0€ </button> <!-- Kada se izabere ovaj žeton, ulog se resetuje na 0 -->
+                <button id="but0" class="zeton"> 0€ </button>
+                <!-- Kada se izabere ovaj žeton, ulog se resetuje na 0 -->
             </div>
             <div id='dIznosUloga' class='brojaci'>
                 <p>Ulog:</p>
@@ -112,135 +144,115 @@
             <button id="butHelp" class="dugme" style='display:none'> Pravila igre </button>
         </div>
     </div>
-    <div id = "dHelp" <!-- style='display: none; overflow: auto' --> >
+    <!-- 
+        Sadrži instrukcije za igru u formi help-a 
+    -->
+    <div id="dHelp" <!-- style='display: none; overflow: auto' -->
         <h1>Tok igre</h1>
         <p>
-        Ajnc, poznat kao i 21, igra se prema unapred određenom bodovnom sistemu. Svaka karta u špilu donosi određen broj bodova. 
-        21 je najbolji mogući zbir koji možete dobiti, a igrač treba da se fokusira da dođe što je bliže tom broju, bez prekoračenja. 
-        Igra počinje deljenjem karata. Prva karta se daje igraču, licem okrenuta na gore, zatim kompjuteru licem okrenutim na dole - skrivena karta.
-        Po jedna od naredne dve podeljene karte se, licem okrenutim na gore, daju igraču, pa zatim i kompjuteru. 
+            Ajnc, poznat kao i 21, igra se prema unapred određenom bodovnom sistemu. Svaka karta u špilu donosi određen broj bodova. 21 je najbolji mogući zbir koji možete dobiti, a igrač treba da se fokusira da dođe što je bliže tom broju, bez prekoračenja. Igra
+            počinje deljenjem karata. Prva karta se daje igraču, licem okrenuta na gore, zatim kompjuteru licem okrenutim na dole - skrivena karta. Po jedna od naredne dve podeljene karte se, licem okrenutim na gore, daju igraču, pa zatim i kompjuteru.
         </p>
         <p>
-        U daljem toku igre, igrač traži po jednu kartu, aktivirajući opciju "Daj kartu". Pri tome vodi računa da ne pređe zbir karata koji iznosi 21. Kada dođe do maksimalnog brojaci
-        koji je manji ili jednak 21, aktivira opciju "Stani". Tada kompjuter izvlači dodatne karte. Kompjuter mora da izvlači dodatne karte sve dok
-        je njegov zbir jednak ili manji od 16. Ako je pri izvlačenju poslednje karte njegov zbir karata veći ili jednak 17, kompjuter nema pravo
-        da izvlači karte i tada se zbirovi karta kompjutera i igrača porede i određuje pobednik.
+            U daljem toku igre, igrač traži po jednu kartu, aktivirajući opciju "Daj kartu". Pri tome vodi računa da ne pređe zbir karata koji iznosi 21. Kada dođe do maksimalnog broja koji je manji ili jednak 21, aktivira opciju "Stani". Tada kompjuter izvlači dodatne
+            karte. Kompjuter mora da izvlači dodatne karte sve dok je njegov zbir jednak ili manji od 16. Ako je pri izvlačenju poslednje karte njegov zbir karata veći ili jednak 17, kompjuter nema pravo da izvlači karte i tada se zbir karta kompjutera
+            i zbir karata igrača porede i određuje pobednik.
         </p>
         <p>
-        U toku igre, igrač ima na raspolaganju opcije: Predaj, Dupliraj, Podeli i Osiguraj koje su kasnije detaljno objašnjene.
+            U toku igre, igrač ima na raspolaganju opcije: Predaj, Dupliraj, Podeli i Osiguraj koje su kasnije detaljno objašnjene.
         </p>
-        
+
         <h1>Pobeđivanje</h1>
         <p>
-        Igrač koji osvoji zbir karata 21 ili manji, a pri tome ima zbir koji jeveći od zbira karata kompjuter dobija nazad svoj uloga
-        i zaradu u iznosu visine uloga.
+            Igrač koji osvoji zbir karata 21 ili manji, a pri tome ima zbir koji je veći od zbira karata kompjutera, dobija nazad svoj uloga i zaradu u iznosu visine uloga.
         </p>
         <p>
-        Ukoliko kompjuter dobije 21 ili manji zbir karata koji je veći od zbira karata igrača, tada igrač gubi ulog.
+            Ukoliko kompjuter dobije 21 ili manji zbir karata koji je veći od zbira karata igrača, tada igrač gubi ulog.
         </p>
         <p>
-        Ukoliko igrač pređe zbir karata od 21, gubi svoj ulog.
+            Ukoliko igrač pređe zbir karata od 21, gubi svoj ulog.
         </p>
         <p>
-        Ukoliko kompjuter pređe zbir karata od 21, igrač dobija nazad svoj ulog i zaradu u iznosu visine uloga.
+            Ukoliko kompjuter pređe zbir karata od 21, igrač dobija nazad svoj ulog i zaradu u iznosu visine uloga.
         </p>
         <p>
-        Ukoliko kompjuter i igrač imaju jednak zbir karata koji je manji ili jednak 21, igrač zadržava svoj ulog.
+            Ukoliko kompjuter i igrač imaju jednak zbir karata koji je manji ili jednak 21, igrač zadržava svoj ulog.
         </p>
-        
-        
+
+
         <h1>Vrednost karata</h1>
-        
-        <p> 
-        Sve karte od 10 na niže vrede koliko piše na njima. Boja nije bitna u ovoj igri, tako da četvorka u srcu jednako vredi kao i četvorka u piku. 
-        Isto važi i za sve ostale boje. Ukoliko igrač dobije dvojku, peticu i osmicu, zbir karata koju igrač ima je 15.
-        Slike (pub, dama, kralj) vrede 10 poena. Isto kao i kod ostalih karata, boja nema nikakvu ulogu. 
-        Ako igrač dobije dva puba, njegova zbir karata je 20. Jedina jača kombinacija je 21, odnosno ajnc.
+
+        <p>
+            Sve karte od 10 na niže vrede koliko piše na njima. Boja nije bitna u ovoj igri, tako da četvorka u srcu jednako vredi kao i četvorka u piku. Isto važi i za sve ostale boje. Ukoliko igrač dobije dvojku, peticu i osmicu, zbir karata koju igrač ima je 15.
+            Slike (žandar, dama, kralj) vrede 10 poena. Isto kao i kod ostalih karata, boja nema nikakvu ulogu. Ako igrač dobije dva žandara, njegova zbir karata je 20. Jedina jača kombinacija je 21, odnosno ajnc.
         </p>
         <p>
-        Poslednja karta je kec. On ima specifičnu vrednost u ajncu. Može vredeti 1 ili 11. Ako je zbir prethodno izvučenih
-        karata 10 ili manji, tada je vrednost keca 11. Ukoliko je zbir karata 11 ili veći, tada je vrednost keca 1. Ako je 
-        prva karta kec, tada vredi 11, a ako ponovo izvučete keca, tada je njegova vrednost 1.
-        Ukoliko dobijete keca i bilo koju sliku, automatski imate ajnc.
-        Ukoliko dobijete keca i peticu, tada možete birati da li ćete stati na 16 ili ćete vući još karata. 
-        Recimo da dobijete žandara i dvojku, a zatim keca. Tada vrednost keca više nije 11 već 1. Tada je vaš zbir 13.
+            Poslednja karta je kec. On ima specifičnu vrednost u ajncu. Može vredeti 1 ili 11. Ako je zbir prethodno izvučenih karata 10 ili manji, tada je vrednost keca 11. Ukoliko je zbir karata 11 ili veći, tada je vrednost keca 1. Ako je prva karta kec, tada
+            vredi 11, a ako ponovo izvučete keca, tada je njegova vrednost 1. Ukoliko dobijete keca i bilo koju sliku, automatski imate ajnc. Ukoliko dobijete keca i peticu, tada možete birati da li ćete stati na 16 ili ćete vući još karata. Recimo da
+            dobijete žandara i dvojku, a zatim keca. Tada vrednost keca više nije 11 već 1. Tada je vaš zbir 13.
         </p>
 
         <h1>Opcije igre</h1>
-        
+
         <p> <u>Stani</u> </p>
         <p>
-        Kada igrač više ne želi uzimati karte, pa mu ostaju one koje je do tada skupio. 
-        Ova akcija se obično radi kada igrač ima dobre karte, preko 17, ili ako dealer ima lošu kartu koju svi vide.
+            Kada igrač više ne želi uzimati karte, pa mu ostaju one koje je do tada skupio. Ova akcija se obično radi kada igrač ima dobre karte, preko 17, ili ako dealer ima lošu kartu koju svi vide.
         </p>
-        
+
         <p><u>Daj kartu</u></p>
         <p>
-        Ovom opcijom igrač dobija još jednu kartu na talonu okrenutu licem na gore.
+            Ovom opcijom igrač dobija još jednu kartu na talonu okrenutu licem na gore.
         </p>
 
         <p><u>Dupliraj</u></p>
         <p>
-        Ovu opciju igrač može da koristi kada je prilikom deljenja dobio prve dve karte čiji je zbir 9, 10 ili 11.  
-        Kada igrač koristi opciju "Dupliraj", mora da duplira ulog i ima pravo da izvuče samo jednu kartu.
+            Ovu opciju igrač može da koristi kada je prilikom deljenja dobio prve dve karte čiji je zbir 9, 10 ili 11. Kada igrač koristi opciju "Dupliraj", mora da duplira ulog i ima pravo da izvuče samo jednu kartu.
         </p>
 
         <p><u>Osiguranje</u></p>
         <p>
-        Ukoliko je nakon deljenja vidljiva karta kompjutera kec, tada igrač može da kupi osiguranje u visini polovine svog uloga.
-        Osuguranje u stvari predstavlja opkladu da će kompjuter izvući štih i dobiti ajnc. Kada igrač kupi osiguranje,
-        i ne izvlače se karte, več kompjuter otkriva svoju skrivenu kartu. Ukoliko kompjuter zaista ima ajnc (zbir karata 21)
-        igraču se isplaćuje osiguranje, ali gubi svoj ulog. Ukoliko kompjuter nema ajnc, tada pobeđuje onaj ko ima veći zbir
-        karata koji je manji od 21.
+            Ukoliko je nakon deljenja vidljiva karta kompjutera kec, tada igrač može da kupi osiguranje u visini polovine svog uloga. Osuguranje u stvari predstavlja opkladu da će kompjuter izvući štih i dobiti ajnc. Kada igrač kupi osiguranje, i ne izvlače se karte,
+            več kompjuter otkriva svoju skrivenu kartu. Ukoliko kompjuter zaista ima ajnc (zbir karata 21) igraču se isplaćuje osiguranje, ali gubi svoj ulog. Ukoliko kompjuter nema ajnc, tada pobeđuje onaj ko ima veći zbir karata koji je manji od 21.
         </p>
 
         <p><u>Podeli</u></p>
         <p>
-        Ova se akcija koristi kada igrač dobije deljenjem dve jednake karte. 
-        Igrač koji napravi podelu, treba postaviti dodatni ulog, jednak početnom, pa dobiva dve kombinacije karata.
+            Ova se akcija koristi kada igrač dobije deljenjem dve jednake karte. Igrač koji napravi podelu, treba postaviti dodatni ulog, jednak početnom, pa dobiva dve kombinacije karata.
         </p>
 
         <p><u>Predaja</u></p>
         <p>
-        Igrač ima na raspolaganju ovu opciju kada misli da neće pobediti kompjuter. Predaja se može dogoditi samo nakon podele karata.
-        Tada igrač može da zadrži pola svog uloga.
+            Igrač ima na raspolaganju ovu opciju kada misli da neće pobediti kompjuter. Predaja se može dogoditi samo nakon podele karata. Tada igrač može da zadrži pola svog uloga.
         </p>
-        
+
         <h1>Obračun dobitka/gubitka</h1>
         <p>
-        Ukoliko u ovoj varijanti igre dobijete zbir 21, dobili ste ajnc i isplaćuje vam se novac 3:2 u odnosu na ulog. Ako ste 
-        uložili 100, dobijate nazad svojih 100 i zaradu od 150.
+            Ukoliko u ovoj varijanti igre dobijete zbir 21, dobili ste ajnc i isplaćuje vam se novac 3:2 u odnosu na ulog. Ako ste uložili 100, dobijate nazad svojih 100 i zaradu od 150.
         </p>
         <p>
-        Ukoliko imate veći zbir karata od kompjutera koji je manji od 21, isplaćuje vam se novac 1:1 u odnosu na ulog. Tada dobijate
-        nazad svoj ulog i zaradu u visini svog uloga.
+            Ukoliko imate veći zbir karata od kompjutera koji je manji od 21, isplaćuje vam se novac 1:1 u odnosu na ulog. Tada dobijate nazad svoj ulog i zaradu u visini svog uloga.
         </p>
         <p>
-        Ukoliko igrač i kompjuter imaju isti broj karata koji je manji ili jednak 21, tada je rezultat nerešen i igrač
-        zadržava svoj ulog.
+            Ukoliko igrač i kompjuter imaju isti broj karata koji je manji ili jednak 21, tada je rezultat nerešen i igrač zadržava svoj ulog.
         </p>
         <p>
-        Ukoliko igrač duplira svoj ulog, tada dobija nazad svoj dvostruki ulog i još toliko kao zaradu.
+            Ukoliko igrač duplira svoj ulog, tada dobija nazad svoj dvostruki ulog i još toliko kao zaradu.
         </p>
         <p>
-        Ukoliko igrac ulozi 100 i kupi osiguranje u visini polovine svog uloga (50), tada: 
+            Ukoliko igrac ulozi 100 i kupi osiguranje u visini polovine svog uloga (50), tada:
         </p>
-        <p style = 'margin-left: 5%'>
-        ako kompjuter dobije zbir karata 21 nakon otkrivanja skrivene karte, tada igrac gubi ulog, vraća mu se osiguranje
-        dobija dvostruki iznos osiguranja. Praktično, sobija iznos u visini uloga i osiguranja i ostaje u tom deljenju na nuli.
+        <p style='margin-left: 5%'>
+            ako kompjuter dobije zbir karata 21 nakon otkrivanja skrivene karte, tada igrac gubi ulog, vraća mu se osiguranje i dobija dvostruki iznos osiguranja. Praktično, dobija iznos u visini uloga i osiguranja i ostaje u tom deljenju na nuli.
         </p>
-        <p style = 'margin-left: 5%'>
-        Ukoliko kompjuter pobedi, tada gubi svoj ulog zajedno sa osiguranjem (-150).
+        <p style='margin-left: 5%'>
+            Ukoliko kompjuter pobedi, tada gubi svoj ulog zajedno sa osiguranjem (-150).
         </p>
-        <p style = 'margin-left: 5%'>
-        Ukoliko igrac pobedi, dobija nazad svoj ulog (+100), zaradu u visini uloga (+100), ali gubi osiguranje (-50)
+        <p style='margin-left: 5%'>
+            Ukoliko igrac pobedi, dobija nazad svoj ulog (+100), zaradu u visini uloga (+100), ali gubi osiguranje (-50)
         </p>
     </div>
 
 
-
-
-    <!-- <script src="/lib/ajncklase.js"></script> -->
     <script type='module' src="/lib/ajnc.js"></script>
 </body>
 

@@ -1,18 +1,11 @@
 "use strict";
 
-import { Karta, Spil, KockarskiSto, StatistikaIgre, 
+import { PozdravniEkran, Karta, Spil, KockarskiSto, StatistikaIgre, 
          InfoIgre, Talon, Dugme} from '/lib/model/ajncklase.js';
 import {Deljenje, Igrac, Split, Banker} from '/lib/controler/igraklase.js';
 
-var kockarskiSto    = new KockarskiSto ();
-var spil            = new Spil ();
-var infoIgre        = new InfoIgre();
-var statistikaIgre  = new StatistikaIgre (0, 10000, 0, 1500, 0);
-var talon           = new Talon(0 ,0, 0);
-var igrac           = new Igrac ('Ivan', 500);
-var banker          = new Banker ('Komp', 10000);
-var deljenje        = new Deljenje (0, 'Standard');
-var split1          = new Split ();
+
+
 
 
 function zatvoriDeljenje (iznosUloga, pobednik ) {
@@ -224,6 +217,95 @@ var fNovaIgra = function () {
     }
 }
 
+var fProveriUnos = function () {
+    
+    var pozdravniEkran  = new PozdravniEkran ();
+
+    let imeIgraca = pozdravniEkran.imeIgraca;
+    let iznosUlogaIgrac = pozdravniEkran.iznosUlogaIgrac;
+    let iznosUlogaKomp = pozdravniEkran.iznosUlogaKomp;
+
+    pozdravniEkran.prikaziGreskuIme ("\u00A0");
+    pozdravniEkran.prikaziGreskuUlogIgrac ("\u00A0");
+    pozdravniEkran.prikaziGreskuUlogKomp ("\u00A0");
+
+    if (imeIgraca === "") {
+        pozdravniEkran.prikaziGreskuIme ('Morate uneti ime igrača!');
+        pozdravniEkran.getFokus('Ime');
+        }
+    else if (imeIgraca.includes(' ')) {
+        pozdravniEkran.prikaziGreskuIme ('Bez razmaka molim!');
+        pozdravniEkran.getFokus('Ime');
+    }
+    else if (imeIgraca.length === 1) {
+        pozdravniEkran.prikaziGreskuIme ('Unesite bar inicijale!');
+        pozdravniEkran.getFokus('Ime');
+    }
+    else if (!imeIgraca.match(/^[a-zA-Z]+$/)) {
+        pozdravniEkran.prikaziGreskuIme ('Ime mora da sadrži samo slova!');
+        pozdravniEkran.getFokus('Ime');
+    }
+    else if (iznosUlogaIgrac <= 0) {
+        pozdravniEkran.prikaziGreskuUlogIgrac ('Unesite pozitivan ceo broj!');
+        pozdravniEkran.getFokus('ulogIgrac');
+    }
+    else if (iznosUlogaKomp <= 0) {
+        pozdravniEkran.prikaziGreskuUlogKomp ('Unesite pozitivan ceo broj!');
+        pozdravniEkran.getFokus('ulogKomp');
+    }
+    else if (iznosUlogaIgrac > 1000000) {
+        pozdravniEkran.prikaziGreskuUlogIgrac ('Ne više od 1 000 000!');
+        pozdravniEkran.getFokus('ulogIgrac');
+    }
+    else if (iznosUlogaKomp > 1000000) {
+        pozdravniEkran.prikaziGreskuUlogKomp ('Ne više od 1 000 000!');
+        pozdravniEkran.getFokus('ulogKomp');
+    }
+    else if (isNaN(iznosUlogaIgrac)) {
+        pozdravniEkran.prikaziGreskuUlogIgrac ('Morate uneti ceo broj!');
+        pozdravniEkran.getFokus('ulogIgrac');
+    }
+    else if (isNaN(iznosUlogaKomp > 1000000)) {
+        pozdravniEkran.prikaziGreskuUlogKomp ('Morate uneti ceo broj!');
+        pozdravniEkran.getFokus('ulogKomp');
+    }
+    else {
+        zapocniIgru (imeIgraca, iznosUlogaIgrac, iznosUlogaKomp);
+    }
+    
+    
+}
+
+function zapocniIgru (imeIgraca, iznosUlogaIgrac, iznosUlogaKomp) {
+    
+    igrac.ime = imeIgraca;
+    infoIgre.prikaziPoruku(igrac.ime + ' je novi igrač. Neka igra počne!')
+    statistikaIgre.upisiIgraca(igrac.ime);
+    
+    statistikaIgre.upisiOsvojenIznosKomp (iznosUlogaKomp);
+    statistikaIgre.upisiOsvojenIznosIgrac (iznosUlogaIgrac);
+
+    igrac.setIznosNovcaZaIgru = iznosUlogaIgrac;
+    banker.setIznosNovcaZaIgru = iznosUlogaKomp;
+    
+    kockarskiSto.sakrijPozdravniEkran();
+    kockarskiSto.otkrijIgru();
+}
+
+
+
+var kockarskiSto    = new KockarskiSto ();
+var spil            = new Spil ();
+var infoIgre        = new InfoIgre();
+var statistikaIgre  = new StatistikaIgre (0, 0, 0, 0, 0, '');
+var talon           = new Talon(0 ,0, 0);
+var igrac           = new Igrac ('', 0);
+var banker          = new Banker ('Komp', 0);
+var deljenje        = new Deljenje (0, 'Standard');
+var split1          = new Split ();
+
+
+var bZapocniIgru = new Dugme ('Započni igru', fProveriUnos);
 var bDajKartu = new Dugme ('Daj kartu', fDajKartu);
 var bStani = new Dugme ('Stani', fStani);
 var bOsiguraj = new Dugme ('Osiguraj', fOsiguraj);
@@ -239,5 +321,5 @@ bStani.sakrijDugme();
 bOsiguraj.sakrijDugme();
 bDupliraj.sakrijDugme();
 bPredaj.sakrijDugme();
-bOtkrijSKartu.sakrijDugme();0
+bOtkrijSKartu.sakrijDugme()
 

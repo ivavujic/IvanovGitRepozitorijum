@@ -1,4 +1,4 @@
-export {Karta, Spil, KockarskiSto, StatistikaIgre, InfoIgre, Talon, Dugme};
+export {PozdravniEkran, Karta, Spil, KockarskiSto, StatistikaIgre, InfoIgre, Talon, Dugme};
 
 class Karta {
     constructor (brojKarte, simbol, skrivenaKarta, imgElement) { 
@@ -128,6 +128,10 @@ class Dugme {
         
         switch (_nazivDugmeta) {
         
+            case 'Započni igru':
+                this._htmlElement = document.getElementById ('butZapocniIgru');
+                this._htmlElement.addEventListener ('click', _funkcija);
+                break;
             case 'Nova igra':
                 this._htmlElement = document.getElementById ('butNovaIgra');
                 this._htmlElement.addEventListener ('click', _funkcija);
@@ -181,10 +185,17 @@ class Dugme {
 class KockarskiSto {
     constructor () {
         this._help = document.getElementById('dHelp');
+        this._pozdravniEkran = document.getElementById ('dPozdravniEkran');
+        this._igra = document.getElementById ('dIgra');
     }
 
     promeniTekstPElementa (pElement, tekst) {
         pElement.innerText = tekst;
+    }
+
+    prikaziGresku (pElement, tekst) {
+        pElement.innerText = tekst;
+        pElement.style.color = "yellow";
     }
 
     sakrijOtkrijHelp () {
@@ -199,8 +210,63 @@ class KockarskiSto {
     sakrijHelp () {
         this._help.style.display = 'none';
     }
+
+    sakrijPozdravniEkran () {
+        this._pozdravniEkran.style.display = 'none';
+    }
+
+    otkrijIgru () {
+        this._igra.style.display = 'block';
+    }
 }
 
+class PozdravniEkran extends KockarskiSto {
+    constructor () {
+        super();
+        this._imeIgraca = document.getElementById ('iImeIgraca').value;
+        this._iznosUlogaIgrac = document.getElementById ('iIznosUlogaIgrac').value;
+        this._iznosUlogaKomp = document.getElementById ('iIznosUlogaKomp').value;
+        this._errImeIgrac = document.getElementById ('errImeIgrac');
+        this._errIznosUlogaIgrac = document.getElementById ('errIznosUlogaIgrac');
+        this._errIznosUlogaKomp = document.getElementById ('errIznosUlogaKomp');
+    }
+
+    get imeIgraca () {
+        return this._imeIgraca;
+    }
+
+    get iznosUlogaIgrac () {
+        return this._iznosUlogaIgrac;
+    }
+
+    get iznosUlogaKomp () {
+        return this._iznosUlogaKomp;
+    }
+
+    prikaziGreskuIme (tekstGreske) {
+        super.prikaziGresku (this._errImeIgrac, tekstGreske);
+    }
+
+    prikaziGreskuUlogIgrac (tekstGreske) {
+        super.prikaziGresku (this._errIznosUlogaIgrac, tekstGreske);
+    }
+
+    prikaziGreskuUlogKomp (tekstGreske) {
+        super.prikaziGresku (this._errIznosUlogaKomp, tekstGreske);
+    }
+
+    getFokus (imePolja) {
+        if (imePolja === 'Ime') {
+            document.getElementById ('iImeIgraca').focus();
+        }
+        else if (imePolja === 'ulogIgrac') {
+            document.getElementById ('iIznosUlogaIgrac').focus();
+        }
+        else if (imePolja === 'ulogKomp') {
+            document.getElementById ('iIznosUlogaKomp').focus();
+        }
+    }
+}
 class StatistikaIgre extends KockarskiSto {
     constructor (brPobedaKomp, osvojenIznosKomp, brPobedaIgrac, osvojenIznosIgrac, iznosUloga) {
         super();
@@ -209,6 +275,8 @@ class StatistikaIgre extends KockarskiSto {
         this._pOsvojenIznosKomp  = document.getElementById ('pOsvojenIznosKomp');
         this._pBrPobedaIgrac     = document.getElementById ('pBrPobedaIgrac');
         this._pOsvojenIznosIgrac = document.getElementById ('pOsvojenIznosIgrac');
+        this._pPobedeIme         = document.getElementById ('pPobedeIme');
+        this._pDobitakIme         = document.getElementById ('pDobitakIme');
     
         this._dIznosUloga        = document.getElementById ('dIznosUloga');
         this._pIznosUloga        = document.getElementById ('pIznosUloga');
@@ -227,6 +295,7 @@ class StatistikaIgre extends KockarskiSto {
         super.promeniTekstPElementa (this._pOsvojenIznosKomp, this.osvojenIznosKomp);
         super.promeniTekstPElementa (this._pBrPobedaIgrac, this.brPobedaIgrac);
         super.promeniTekstPElementa (this._pOsvojenIznosIgrac, this.osvojenIznosIgrac);
+
         this._omoguciZetone ();
     }
 
@@ -237,7 +306,7 @@ class StatistikaIgre extends KockarskiSto {
     }
 
     upisiOsvojenIznosKomp (osvojenIznosUPartijiKomp) {
-        this.osvojenIznosKomp = this.osvojenIznosKomp + osvojenIznosUPartijiKomp;
+        this.osvojenIznosKomp = this.osvojenIznosKomp + parseInt (osvojenIznosUPartijiKomp);
         super.promeniTekstPElementa (this._pOsvojenIznosKomp, this.osvojenIznosKomp);
     }
 
@@ -247,8 +316,15 @@ class StatistikaIgre extends KockarskiSto {
     }
 
     upisiOsvojenIznosIgrac (osvojenIznosUPartijiIgrac) {
-        this.osvojenIznosIgrac = this.osvojenIznosIgrac + osvojenIznosUPartijiIgrac;
+        this.osvojenIznosIgrac = this.osvojenIznosIgrac + parseInt (osvojenIznosUPartijiIgrac);
         super.promeniTekstPElementa (this._pOsvojenIznosIgrac, this.osvojenIznosIgrac);
+    }
+
+    upisiIgraca (imeIgraca) {
+        let brPobedaIme =  imeIgraca + " broj pobeda";
+        let dobitakIme = imeIgraca + ' dobitak';
+        super.promeniTekstPElementa (this._pPobedeIme, brPobedaIme);
+        super.promeniTekstPElementa (this._pDobitakIme, dobitakIme);
     }
 
     upisiUmanjeniIznosIgrac (vrednostZetona) {
